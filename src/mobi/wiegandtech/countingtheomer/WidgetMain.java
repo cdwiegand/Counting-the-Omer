@@ -26,25 +26,14 @@ public class WidgetMain extends AppWidgetProvider {
 		}
 	}
 
-	@Override
-	public void onReceive(final Context context, Intent intent) {
-		if ("MOBI_WIEGANDTECH_COUNTINGTHEOMER_UPDATE"
-				.equals(intent.getAction())) {
-			updateAppWidget(context, AppWidgetManager.INVALID_APPWIDGET_ID);
-		} else {
-			super.onReceive(context, intent);
-		}
-	}
-
 	public static void updateAppWidget(Context context, int appWidgetId) {
 		RemoteViews remoteView = new RemoteViews(context.getPackageName(),
 				R.layout.main);
 
 		remoteView.setTextViewText(R.id.TextView01, getOmerText());
 
-		Intent it = new Intent(context, WidgetMain.class);
-		it.setAction("MOBI_WIEGANDTECH_COUNTINGTHEOMER_UPDATE");
-		PendingIntent pi = PendingIntent.getBroadcast(context, 0, it, 0);
+		Intent it = new Intent(context, Blessing.class);
+		PendingIntent pi = PendingIntent.getActivity(context, 0, it, 0);
 		remoteView.setOnClickPendingIntent(R.id.TextView01, pi);
 
 		// have to call this AFTER setOnClickPendingIntent!
@@ -58,21 +47,41 @@ public class WidgetMain extends AppWidgetProvider {
 	}
 
 	public static String getOmerText() {
-		long now = convertMillisToDays(Calendar.getInstance());
-		// code for 2011 only!
-		Calendar startOfOmerCal = GregorianCalendar.getInstance();
-		startOfOmerCal.set(2011, 3, 19);
-		// I HATE JAVA MONTHS STARTING AT 0!!!
-		long startOfOmer = convertMillisToDays(startOfOmerCal);
-		// get days
-		long dayOfOmer = (now - startOfOmer);
+		long dayOfOmer = getDayOfOmer();
 		if (dayOfOmer == -1)
-			return Math.abs(dayOfOmer) + " day until we count!";
+			return "We start to count the Omer tomorrow!";
 		if (dayOfOmer < 0)
-			return Math.abs(dayOfOmer) + " days until we count!";
+			return Math.abs(dayOfOmer) + " days until the Omer!";
 		if (dayOfOmer >= 49)
 			return "Done counting the omer for 2011! Congrats!";
 		return "Tonight is day " + (dayOfOmer + 1) + " of the omer.";
+	}
+
+	public static int getDayOfOmer() {
+		long now = convertMillisToDays(Calendar.getInstance());
+		Calendar startOfOmerCal = GregorianCalendar.getInstance();
+		switch (startOfOmerCal.get(Calendar.YEAR)) {
+		case 2011:
+			startOfOmerCal.set(2011, 3, 19); // April 19th
+			break;
+		case 2012:
+			startOfOmerCal.set(2012, 3, 7); // April 7th
+			break;
+		case 2013:
+			startOfOmerCal.set(2013, 2, 26); // March 26th
+			break;
+		case 2014:
+			startOfOmerCal.set(2014, 3, 15); // April 15th
+			break;
+		case 2015:
+			startOfOmerCal.set(2015, 3, 4); // April 4th
+			break;
+		}
+		// I HATE JAVA MONTHS STARTING AT 0!!!
+		long startOfOmer = convertMillisToDays(startOfOmerCal);
+		// get days
+		return 6;
+//		return (int) (now - startOfOmer);
 	}
 
 	private static long convertMillisToDays(Calendar value) {

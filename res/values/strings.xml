@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Counting The Omer</string>
+	<string name="app_name">Counting The Omer</string>
+	<string name="blessing">Barukh ata Adonai Eloheinu Melekh ha\'Olam asher
+		kid\'shanu b\'mitzvotav v\'tizivanu al sefirat ha\'omer.</string>
+	<string name="blessing2days">Today is the {DAY} day of the omer.</string>
+	<string name="blessing2daysweeks">Today is the {DAY} day, which is {WEEK}, of the omer.</string>
+	<string name="info">Click here for more info on counting the omer</string>
 </resources>
