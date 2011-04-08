@@ -80,8 +80,8 @@ public class WidgetMain extends AppWidgetProvider {
 		// I HATE JAVA MONTHS STARTING AT 0!!!
 		long startOfOmer = convertMillisToDays(startOfOmerCal);
 		// get days
-		return 6;
-//		return (int) (now - startOfOmer);
+//		return 6;
+		return (int) (now - startOfOmer);
 	}
 
 	private static long convertMillisToDays(Calendar value) {
