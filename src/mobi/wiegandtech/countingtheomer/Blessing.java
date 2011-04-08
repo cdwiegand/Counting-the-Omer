@@ -44,16 +44,31 @@ public class Blessing extends Activity {
 		setContentView(R.layout.blessing);
 		TextView tv = (TextView) findViewById(R.id.TextView01);
 		tv.setText(s);
-		tv = (TextView) findViewById(R.id.TextView02);
-		tv.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse("http://www.myjewishlearning.com/holidays/Jewish_Holidays/Passover/In_the_Community/The_Omer/How_to_Count.shtml"));
-				Blessing.this.startActivity(i);
-			}
-		});
+
+		tv = (TextView) findViewById(R.id.TextView02chabad);
+		tv.setOnClickListener(new UrlClickListener(this
+				.getString(R.string.url_chabad)));
+		tv = (TextView) findViewById(R.id.TextView02aish);
+		tv.setOnClickListener(new UrlClickListener(this
+				.getString(R.string.url_aish)));
+		tv = (TextView) findViewById(R.id.TextView02mjl);
+		tv.setOnClickListener(new UrlClickListener(this
+				.getString(R.string.url_mjl)));
+	}
+
+	public class UrlClickListener implements OnClickListener {
+		private String url = "";
+
+		public UrlClickListener(String urlToOpen) {
+			url = urlToOpen;
+		}
+
+		@Override
+		public void onClick(View v) {
+			Intent i = new Intent(Intent.ACTION_VIEW);
+			i.setData(Uri.parse(url));
+			Blessing.this.startActivity(i);
+		}
 	}
 
 	public static String getOrdinalFor(int value) {

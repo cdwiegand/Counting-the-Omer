@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
+	android:orientation="vertical" android:layout_width="wrap_content"
 	android:layout_marginBottom="3px" android:layout_marginLeft="3px"
-	android:layout_marginRight="3px" android:layout_marginTop="3px"
-	android:layout_height="fill_parent">
+	android:gravity="center" android:layout_marginRight="3px"
+	android:layout_marginTop="3px" android:layout_height="wrap_content">
 	<LinearLayout android:id="@+id/LinearLayout02"
-		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:layout_marginBottom="3px" android:layout_marginLeft="3px"
 		android:layout_marginRight="3px" android:layout_marginTop="3px"
 		android:background="@color/trans_grey">
-		<TextView android:id="@+id/TextView01" android:layout_width="fill_parent"
-			android:layout_marginBottom="3px"
-			android:layout_marginLeft="3px" android:layout_marginRight="3px"
-			android:layout_marginTop="3px" android:layout_gravity="center|center_vertical"
-			android:layout_height="fill_parent" android:textColor="@color/black" android:textSize="40px" android:gravity="center"/>
+		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content"
+			android:layout_marginBottom="3px" android:layout_marginLeft="3px"
+			android:layout_marginRight="3px" android:layout_marginTop="3px"
+			android:layout_gravity="center|center_vertical"
+			android:layout_height="wrap_content" android:textColor="@color/black"
+			android:textSize="26sp" android:gravity="center" />
 	</LinearLayout>
 </LinearLayout>

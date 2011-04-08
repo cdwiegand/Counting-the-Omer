@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical">
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical" android:background="@color/white">
+	<TextView android:id="@+id/TextView01" android:layout_height="wrap_content"
+		android:textColor="@color/black" android:layout_width="fill_parent"
+		android:textSize="24sp" android:gravity="center"></TextView>
 	<TextView android:id="@+id/TextView02" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:textColor="@color/blue"
-		android:text="@string/info"></TextView>
-	<TextView android:id="@+id/TextView01" android:layout_height="fill_parent"
-		android:layout_width="fill_parent"></TextView>
+		android:text="@string/info" android:textSize="18sp" android:gravity="center"></TextView>
+	<TextView android:id="@+id/TextView02chabad"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:textColor="@color/blue" android:text="@string/text_chabad"
+		android:textSize="18sp" android:gravity="center"></TextView>
+	<TextView android:id="@+id/TextView02aish"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:textColor="@color/blue" android:text="@string/text_aish"
+		android:textSize="18sp" android:gravity="center"></TextView>
+	<TextView android:id="@+id/TextView02mjl"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:textColor="@color/blue" android:text="@string/text_mjl"
+		android:textSize="18sp" android:gravity="center"></TextView>
+	<ImageView android:id="@+id/ImageView01" android:src="@drawable/omer"
+		android:scaleType="centerInside" android:layout_height="fill_parent"
+		android:layout_width="fill_parent"></ImageView>
 </LinearLayout>

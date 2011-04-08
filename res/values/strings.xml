@@ -4,6 +4,22 @@
 	<string name="blessing">Barukh ata Adonai Eloheinu Melekh ha\'Olam asher
 		kid\'shanu b\'mitzvotav v\'tizivanu al sefirat ha\'omer.</string>
 	<string name="blessing2days">Today is the {DAY} day of the omer.</string>
-	<string name="blessing2daysweeks">Today is the {DAY} day, which is {WEEK}, of the omer.</string>
-	<string name="info">Click here for more info on counting the omer</string>
+	<string name="blessing2daysweeks">Today is the {DAY} day, which is {WEEK}, of the
+		omer.</string>
+	<string name="info">Click below for more info on counting the omer
+	</string>
+	<string name="text_chabad">
+		<u>Chabad-Lubavitch</u>
+	</string>
+	<string name="text_aish">
+		<u>Aish.com</u>
+	</string>
+	<string name="text_mjl">
+		<u>MyJewishLearning.com</u>
+	</string>
+	<string name="url_mjl">http://www.myjewishlearning.com/holidays/Jewish_Holidays/Passover/In_the_Community/The_Omer/How_to_Count.shtml
+	</string>
+	<string name="url_aish">http://www.aish.com/h/o/</string>
+	<string name="url_chabad">http://www.chabad.org/library/article_cdo/aid/130631/jewish/Sefirat-HaOmer.htm
+	</string>
 </resources>
