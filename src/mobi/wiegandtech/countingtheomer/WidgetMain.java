@@ -48,17 +48,26 @@ public class WidgetMain extends AppWidgetProvider {
 
 	public static String getOmerText() {
 		long dayOfOmer = getDayOfOmer();
-		if (dayOfOmer == -1)
+		if (dayOfOmer == 0)
 			return "We start to count the Omer tomorrow!";
-		if (dayOfOmer < 0)
-			return Math.abs(dayOfOmer) + " days until the Omer!";
-		if (dayOfOmer >= 49)
-			return "Done counting the omer for 2011! Congrats!";
-		return "Tonight is day " + (dayOfOmer + 1) + " of the omer.";
+		if (dayOfOmer < 1)
+			return Math.abs(dayOfOmer - 1) + " days until the Omer!";
+		if (dayOfOmer > 49)
+			return "Done counting the omer for this year! Congrats!";
+		if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= 16) // 4pm+
+			return "Tonight is day " + (dayOfOmer) + " of the omer.";
+		else
+			return "Last night / today is day " + (dayOfOmer - 1)
+					+ " of the omer.";
 	}
 
 	public static int getDayOfOmer() {
 		long now = convertMillisToDays(Calendar.getInstance());
+
+		//Calendar testCal = GregorianCalendar.getInstance();
+		//testCal.set(2011, 3, 20, 9, 10, 10); // test - last night of omer
+		//now = convertMillisToDays(testCal);
+
 		Calendar startOfOmerCal = GregorianCalendar.getInstance();
 		switch (startOfOmerCal.get(Calendar.YEAR)) {
 		case 2011:
@@ -80,11 +89,13 @@ public class WidgetMain extends AppWidgetProvider {
 		// I HATE JAVA MONTHS STARTING AT 0!!!
 		long startOfOmer = convertMillisToDays(startOfOmerCal);
 		// get days
-//		return 6;
-		return (int) (now - startOfOmer);
+		return (int) (now - startOfOmer) + 1;
 	}
 
 	private static long convertMillisToDays(Calendar value) {
+		value.set(Calendar.HOUR_OF_DAY, 0);
+		value.set(Calendar.MINUTE, 0);
+		value.set(Calendar.SECOND, 0);
 		return value.getTimeInMillis() / 1000 / 60 / 60 / 24;
 	}
 }

@@ -4,21 +4,26 @@
 	android:orientation="vertical" android:background="@color/white">
 	<TextView android:id="@+id/TextView01" android:layout_height="wrap_content"
 		android:textColor="@color/black" android:layout_width="fill_parent"
-		android:textSize="24sp" android:gravity="center"></TextView>
+		android:textSize="24sp" android:gravity="center" android:padding="2px"></TextView>
 	<TextView android:id="@+id/TextView02" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:textColor="@color/blue"
-		android:text="@string/info" android:textSize="18sp" android:gravity="center"></TextView>
+		android:padding="2px" android:text="@string/info" android:textSize="18sp"
+		android:gravity="center"></TextView>
 	<TextView android:id="@+id/TextView02chabad"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:textColor="@color/blue" android:text="@string/text_chabad"
+		android:padding="2px" android:textColor="@color/blue" android:text="@string/text_chabad"
 		android:textSize="18sp" android:gravity="center"></TextView>
-	<TextView android:id="@+id/TextView02aish"
+	<TextView android:id="@+id/TextView02aish" android:padding="2px"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:textColor="@color/blue" android:text="@string/text_aish"
 		android:textSize="18sp" android:gravity="center"></TextView>
-	<TextView android:id="@+id/TextView02mjl"
+	<TextView android:id="@+id/TextView02mjl" android:padding="2px"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:textColor="@color/blue" android:text="@string/text_mjl"
+		android:textSize="18sp" android:gravity="center"></TextView>
+	<TextView android:id="@+id/TextView03" android:padding="2px"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:textColor="@color/black" android:text="@string/text_widgetadd"
 		android:textSize="18sp" android:gravity="center"></TextView>
 	<ImageView android:id="@+id/ImageView01" android:src="@drawable/omer"
 		android:scaleType="centerInside" android:layout_height="fill_parent"

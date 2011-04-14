@@ -1,5 +1,7 @@
 package mobi.wiegandtech.countingtheomer;
 
+import java.util.Calendar;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,37 +15,9 @@ public class Blessing extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		String s = getString(R.string.blessing);
-		s += "\n\n";
-
-		int dayOfOmer = WidgetMain.getDayOfOmer() + 1; // we want TONIGHTS
-		if (dayOfOmer < 1) {
-			s = "We are not yet counting the omer, silly!";
-		} else if (dayOfOmer < 7) {
-			s += getString(R.string.blessing2days);
-			s.replace("{DAY}", Integer.toString(dayOfOmer)
-					+ getOrdinalFor(dayOfOmer));
-		} else {
-			int weeks = dayOfOmer / 7;
-			int days = (dayOfOmer - 7) % 7;
-			String weeksTmp = Integer.toString(weeks) + " week";
-			if (weeks > 1)
-				weeksTmp += "s";
-			if (days > 0) {
-				weeksTmp += " and " + Integer.toString(days) + " day";
-				if (days > 1)
-					weeksTmp += "s";
-			}
-
-			s += getString(R.string.blessing2daysweeks);
-			s = s.replace("{DAY}", Integer.toString(dayOfOmer)
-					+ getOrdinalFor(dayOfOmer));
-			s = s.replace("{WEEK}", weeksTmp);
-		}
-
 		setContentView(R.layout.blessing);
 		TextView tv = (TextView) findViewById(R.id.TextView01);
-		tv.setText(s);
+		tv.setText(getBlessingText());
 
 		tv = (TextView) findViewById(R.id.TextView02chabad);
 		tv.setOnClickListener(new UrlClickListener(this
@@ -54,6 +28,73 @@ public class Blessing extends Activity {
 		tv = (TextView) findViewById(R.id.TextView02mjl);
 		tv.setOnClickListener(new UrlClickListener(this
 				.getString(R.string.url_mjl)));
+	}
+
+	private String getBlessingText() {
+		String s = "";
+
+		int dayOfOmer = WidgetMain.getDayOfOmer(); // we want TONIGHTS
+		if (dayOfOmer < 1) {
+			s = "We are not yet counting the omer, silly!";
+		} else if (dayOfOmer > 49) {
+			s = "We are all done counting the omer - congrats!";
+		} else {
+			// if after 4, we're in "evening mode", use current day
+			if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= 16)
+			{
+				if (dayOfOmer <= 7)
+					s = getFirstWeekString(s, dayOfOmer, true);
+				else
+					s = getNotFirstWeekString(s, dayOfOmer, true);
+			} else {
+				// roll back a day, we are in "morning" mode
+				dayOfOmer--;
+				if (dayOfOmer <= 7)
+					s = getFirstWeekString(s, dayOfOmer, false);
+				else
+					s = getNotFirstWeekString(s, dayOfOmer, false);
+			}
+		}
+		return s;
+	}
+
+	private String getFirstWeekString(String s, int dayOfOmer, boolean isEvening) {
+		if (isEvening)
+			s += getString(R.string.blessing);
+		else
+			s += getString(R.string.blessingMORNING);
+		s += "\n\n";
+		s += getString(isEvening ? R.string.blessing2daysEVENING
+				: R.string.blessing2daysMORNING);
+		s = s.replace("{DAY}", Integer.toString(dayOfOmer)
+				+ getOrdinalFor(dayOfOmer));
+		return s;
+	}
+
+	private String getNotFirstWeekString(String s, int dayOfOmer,
+			boolean isEvening) {
+		int weeks = dayOfOmer / 7;
+		int days = dayOfOmer % 7;
+		String weeksTmp = Integer.toString(weeks) + " week";
+		if (weeks > 1)
+			weeksTmp += "s";
+		if (days > 0) {
+			weeksTmp += " and " + Integer.toString(days) + " day";
+			if (days > 1)
+				weeksTmp += "s";
+		}
+
+		if (isEvening)
+			s += getString(R.string.blessing);
+		else
+			s += getString(R.string.blessingMORNING);
+		s += "\n\n";
+		s += getString(isEvening ? R.string.blessing2daysweeksEVENING
+				: R.string.blessing2daysweeksMORNING);
+		s = s.replace("{DAY}", Integer.toString(dayOfOmer)
+				+ getOrdinalFor(dayOfOmer));
+		s = s.replace("{WEEK}", weeksTmp);
+		return s;
 	}
 
 	public class UrlClickListener implements OnClickListener {
