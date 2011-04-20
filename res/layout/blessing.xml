@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	android:orientation="vertical" android:background="@color/white">
-	<ScrollView android:id="@+id/ScrollView01"
-		android:layout_width="fill_parent" android:layout_height="fill_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/ScrollView01" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:orientation="vertical"
+		android:background="@color/white">
 		<TextView android:id="@+id/TextView01" android:layout_height="wrap_content"
 			android:textColor="@color/black" android:layout_width="fill_parent"
 			android:textSize="24sp" android:gravity="center" android:padding="2px"></TextView>
@@ -30,5 +31,6 @@
 		<ImageView android:id="@+id/ImageView01" android:src="@drawable/omer"
 			android:scaleType="centerInside" android:layout_height="fill_parent"
 			android:layout_width="fill_parent"></ImageView>
-	</ScrollView>
-</LinearLayout>
+	</LinearLayout>
+</ScrollView>
+

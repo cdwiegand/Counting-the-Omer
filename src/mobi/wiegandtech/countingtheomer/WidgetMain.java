@@ -56,6 +56,8 @@ public class WidgetMain extends AppWidgetProvider {
 			return "Done counting the omer for this year! Congrats!";
 		if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= 16) // 4pm+
 			return "Tonight is day " + (dayOfOmer) + " of the omer.";
+		else if (dayOfOmer == 0 && Calendar.getInstance().get(Calendar.HOUR_OF_DAY) < 16)
+			return "Tonight is the first day of the omer.";
 		else
 			return "Last night / today is day " + (dayOfOmer - 1)
 					+ " of the omer.";
